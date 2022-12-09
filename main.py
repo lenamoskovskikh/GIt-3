@@ -160,6 +160,36 @@ class TheMainWindow(QMainWindow):
         w = self
 
 
+    def daytask(self):
+        self.con = sqlite3.connect('problems.db')
+        self.cur = self.con.cursor()
+        res = self.cur.execute(f"""SELECT task FROM problems""").fetchall()
+        m = []
+        for el in res:
+            m.append(''.join(el))
+        self.textEdit.setText(random.choice(m))
+
+
+    def solve(self):
+        self.con = sqlite3.connect('problems.db')
+        self.cur = self.con.cursor()
+        res = self.cur.execute(f"""SELECT solve FROM problems where task = '{self.textEdit.toPlainText()}'""").fetchall()[0]
+        id = self.cur.execute(f"""SELECT id FROM problems where task = '{self.textEdit.toPlainText()}'""").fetchall()[0]
+        for el in res:
+            if el == 'нет':
+                self.textEdit_2.setText('Решения еще нет, но вы можете его добавить, нажав на кнопку справа')
+            else:
+                self.textEdit_2.setText(el)
+        res1 = ''
+        for el in id:
+            res1 = res1 + str(el)
+        self.lineEdit.setText(f'Номер задачи: {res1}')
+
+
+    def add_solve(self):
+        self.add_solving = SolveWindow()
+        self.add_solving.show()
+
 
 
 if __name__ == '__main__':

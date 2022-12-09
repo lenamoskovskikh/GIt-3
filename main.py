@@ -209,6 +209,174 @@ class SolveWindow(QMainWindow):
         TheMainWindow.solve(w)
         self.close()
 
+class GoWindow(QMainWindow):
+    def __init__(self):
+        super().__init__()
+        uic.loadUi('go.ui', self)
+        self.label_5.setFont(QFont("Times New Roman", 16))
+        self.label_2.setFont(QFont("Times New Roman", 16))
+        self.label.setFont(QFont("Times New Roman", 16))
+        self.label_4.setFont(QFont("Times New Roman", 30))
+        self.con = sqlite3.connect('profiles.db')
+        self.cur = self.con.cursor()
+        self.pushButton.setStyleSheet("font: 20pt \"Times New Roman\";\n"
+                                      "color: rgb(255, 255, 255);\n"
+                                      "background-color: rgba(100, 100, 150, 170);")
+        self.pushButton.clicked.connect(self.go)
+
+    def go(self):
+        global profile
+        name = self.lineEdit.text()
+        password1 = self.lineEdit_2.text()
+        result = list(self.cur.execute("""SELECT * FROM profiles""").fetchall()[0])
+        if name in result:
+            password_main = self.cur.execute(f"""SELECT password FROM profiles WHERE name = '{name}'""").fetchall()[0][0]
+            if password1 == password_main:
+                points = self.cur.execute(f"""SELECT points FROM profiles WHERE name = '{name}'""").fetchall()[0][0]
+                profile = [name, points]
+                self.close()
+        else:
+            self.label_5.setText('Такой пользователь еще не зарегистрирован')
+
+
+class InfoWindow(QMainWindow):
+    def __init__(self):
+        super().__init__()
+        uic.loadUi('info.ui', self)
+
+
+class RegWindow(QMainWindow):
+    def __init__(self):
+        super().__init__()
+        uic.loadUi('registration.ui', self)
+        self.con = sqlite3.connect('profiles.db')
+        self.cur = self.con.cursor()
+        self.label_5.setFont(QFont("Times New Roman", 16))
+        self.pushButton.setStyleSheet("font: 20pt \"Times New Roman\";\n"
+                                        "color: rgb(255, 255, 255);\n"
+                                        "background-color: rgba(100, 100, 150, 170);")
+        self.label.setFont(QFont("Times New Roman", 14))
+        self.label_2.setFont(QFont("Times New Roman", 14))
+        self.label_3.setFont(QFont("Times New Roman", 14))
+        self.label_4.setFont(QFont("Times New Roman", 35))
+        self.pushButton.clicked.connect(self.go)
+
+
+    def go(self):
+        global profile
+        name = self.lineEdit.text()
+        password1 = self.lineEdit_2.text()
+        password2 = self.lineEdit_3.text()
+        if password1 != password2:
+            self.label_5.setText('Неверно введен пароль')
+        else:
+            alpha = False
+            digit = False
+            for el in password2:
+                if el.isdigit():
+                    digit = True
+                if el.isalpha():
+                    alpha = True
+            if alpha and digit:
+                if name == '':
+                    self.label_5.setText('Заполните первое поле')
+                else:
+                    result = list(self.cur.execute("""SELECT * FROM profiles""").fetchall()[0])
+                    if name not in result:
+                        profile = [name, 0]
+                        self.cur.execute(f"""
+                                            INSERT INTO profiles(points, name, password) VALUES({0}, '{name}', '{password1}')""")
+                        self.con.commit()
+                        self.close()
+                        result = self.cur.execute("""SELECT name FROM profiles""").fetchall()
+                        print(result)
+
+
+                    else:
+                        self.label_5.setText('Пользователь с данным никнеймом уже зарегистрирован')
+            else:
+                self.label_5.setText('В пароле должны быть и цифры, и буквы')
+
+
+
+
+
+
+class LitWindow(QMainWindow):
+    def __init__(self):
+        super().__init__()
+        uic.loadUi('literature.ui', self)
+        global a
+        self.con = sqlite3.connect('literature.db')
+        self.cur = self.con.cursor()
+        self.label.setFont(QFont("Times New Roman", 20))
+        self.pushButton.setStyleSheet("font: 12pt \"Times New Roman\";\n"
+                                        "color: rgb(255, 255, 255);\n"
+                                        "background-color: rgba(100, 100, 150, 170);")
+        self.new()
+        self.pushButton.clicked.connect(self.run)
+        a = self
+
+    def run(self):
+        stylesheet_lit = """            ExtraWindow {                background-image: url("lit2.png");                 background-repeat: no-repeat;                 background-position: center;            }        """
+        self.win = ExtraWindow()
+        self.win.setStyleSheet(stylesheet_lit)
+        self.win.show()
+
+    def new(self):
+        result = self.cur.execute("""SELECT name, link, author, subject from books""").fetchall()
+        self.tableWidget.setRowCount(0)
+        self.tableWidget.setColumnCount(4)
+        self.tableWidget.setHorizontalHeaderLabels(['название', 'ссылка', 'автор', 'предмет'])
+        for value, item in enumerate(result):
+            self.tableWidget.setRowCount(self.tableWidget.rowCount() + 1)
+            for el, row in enumerate(item):
+                self.tableWidget.setItem(value, el, QTableWidgetItem(str(row)))
+        self.tableWidget.horizontalHeader().resizeSection(1, 300)
+        self.tableWidget.horizontalHeader().resizeSection(0, 300)
+
+
+
+class ExtraWindow(QMainWindow):
+    def __init__(self):
+        super().__init__()
+        uic.loadUi('add_book.ui', self)
+        self.con = sqlite3.connect('literature.db')
+        self.cur = self.con.cursor()
+        self.name.setFont(QFont("Times New Roman", 14))
+        self.link.setFont(QFont("Times New Roman", 14))
+        self.sub.setFont(QFont("Times New Roman", 14))
+        self.author.setFont(QFont("Times New Roman", 14))
+        self.pushButton.setStyleSheet("font: 12pt \"Times New Roman\";\n"
+                                        "color: rgb(255, 255, 255);\n"
+                                        "background-color: rgba(0, 0, 100, 200);")
+        self.pushButton.clicked.connect(self.run)
+
+
+    def run(self):
+        self.error.setText('')
+        name = self.lineEdit.text()
+        link = self.lineEdit_2.text()
+        sub = self.lineEdit_3.text()
+        author = self.lineEdit_4.text()
+        try:
+            if name.isdigit() or link.isdigit() or sub.isdigit() or author.isdigit():
+                raise ValueError
+            if name == '' or link == '' or sub == '' or author == '':
+                raise NameError
+        except ValueError:
+            self.error.setText('Неверно заполнена форма')
+            return
+        except NameError:
+            self.error.setText('Форма пустая, заполните ее полностью')
+            return
+        self.cur.execute("""
+INSERT INTO books(name, link, author, subject) VALUES(?, ?, ?, ?)""", (name, link,
+                                                                        author, sub))
+        self.con.commit()
+        self.con.close()
+        LitWindow.new(a)
+        self.close()
 
 
 if __name__ == '__main__':

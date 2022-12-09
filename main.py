@@ -83,6 +83,83 @@ class MainWindow(QMainWindow):
         self.registration.show()
 
 
+w = None
+class TheMainWindow(QMainWindow):
+    def __init__(self):
+        super().__init__()
+        global w
+        uic.loadUi('themain.ui', self)
+        self.pushButton_3.setStyleSheet("font: 12pt \"Times New Roman\";\n"
+                                        "color: rgb(255, 255, 255);\n"
+                                        "background-color: rgba(100, 100, 150, 170);")
+        self.pushButton_4.setStyleSheet("font: 12pt \"Times New Roman\";\n"
+                                        "color: rgb(255, 255, 255);\n"
+                                        "background-color: rgba(100, 100, 150, 170);")
+        self.pushButton_5.setStyleSheet("font: 12pt \"Times New Roman\";\n"
+                                        "color: rgb(255, 255, 255);\n"
+                                        "background-color: rgba(100, 100, 150, 170);")
+        self.pushButton_6.setStyleSheet("font: 12pt \"Times New Roman\";\n"
+                                        "color: rgb(255, 255, 255);\n"
+                                        "background-color: rgba(100, 100, 150, 170);")
+        self.pushButton_7.setStyleSheet("font: 12pt \"Times New Roman\";\n"
+                                        "color: rgb(255, 255, 255);\n"
+                                        "background-color: rgba(100, 100, 150, 170);")
+        self.pushButton_8.setStyleSheet("font: 12pt \"Times New Roman\";\n"
+                                        "color: rgb(255, 255, 255);\n"
+                                        "background-color: rgba(100, 100, 150, 170);")
+        self.pushButton_9.setStyleSheet("font: 12pt \"Times New Roman\";\n"
+                                        "color: rgb(255, 255, 255);\n"
+                                        "background-color: rgba(100, 100, 150, 170);")
+        self.pushButton_10.setStyleSheet("font: 12pt \"Times New Roman\";\n"
+                                        "color: rgb(255, 255, 255);\n"
+                                        "background-color: rgba(100, 100, 150, 170);")
+        self.pushButton_11.setStyleSheet("font: 12pt \"Times New Roman\";\n"
+                                        "color: rgb(255, 255, 255);\n"
+                                        "background-color: rgba(100, 100, 150, 170);")
+        self.pushButton_12.setStyleSheet("font: 12pt \"Times New Roman\";\n"
+                                        "color: rgb(255, 255, 255);\n"
+                                        "background-color: rgba(100, 100, 150, 170);")
+        self.pushButton_13.setStyleSheet("font: 12pt \"Times New Roman\";\n"
+                                        "color: rgb(255, 255, 255);\n"
+                                        "background-color: rgba(100, 100, 150, 170);")
+        self.pushButton_14.setStyleSheet("font: 12pt \"Times New Roman\";\n"
+                                        "color: rgb(255, 255, 255);\n"
+                                        "background-color: rgba(100, 100, 150, 170);")
+        self.pushButton_15.setStyleSheet("font: 12pt \"Times New Roman\";\n"
+                                         "color: rgb(255, 255, 255);\n"
+                                         "background-color: rgba(100, 100, 150, 170);")
+        self.pushButton_16.setStyleSheet("font: 12pt \"Times New Roman\";\n"
+                                         "color: rgb(255, 255, 255);\n"
+                                         "background-color: rgba(100, 100, 150, 170);")
+        self.pushButton_17.setStyleSheet("font: 12pt \"Times New Roman\";\n"
+                                         "color: rgb(255, 255, 255);\n"
+                                         "background-color: rgba(100, 100, 150, 170);")
+        self.pushButton_18.setStyleSheet("font: 12pt \"Times New Roman\";\n"
+                                         "color: rgb(255, 255, 255);\n"
+                                         "background-color: rgba(100, 100, 150, 170);")
+        self.label_2.setFont(QFont("Academy", 17))
+        self.label.setStyleSheet("font: 17pt \"Academy\";\n"
+                                        "color: rgb(255, 255, 255);\n"
+                                        "background-color: rgba(100, 100, 150, 0);")
+        self.textEdit.setEnabled(False)
+        self.textEdit_2.setEnabled(False)
+        self.textEdit.setStyleSheet("font: 17pt \"Academy\";\n"
+                                        "color: rgb(0, 0, 0);\n"
+                                        "background-color: rgba(255, 255, 255, 170);")
+
+        self.textEdit_2.setStyleSheet("font: 17pt \"Academy\";\n"
+                                    "color: rgb(0, 0, 0);\n"
+                                    "background-color: rgba(255, 255, 255, 170);")
+        self.daytask()
+        self.pushButton_21.clicked.connect(self.solve)
+        self.pushButton_22.clicked.connect(self.add_solve)
+        self.label_3.setFont(QFont("Academy", 17))
+        self.lineEdit.setStyleSheet("font: 17pt \"Academy\";\n"
+                                    "color: rgb(0, 0, 0);\n"
+                                    "background-color: rgba(255, 255, 255, 170);")
+        w = self
+
+
 
 
 if __name__ == '__main__':

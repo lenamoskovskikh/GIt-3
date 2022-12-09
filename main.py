@@ -191,6 +191,25 @@ class TheMainWindow(QMainWindow):
         self.add_solving.show()
 
 
+class SolveWindow(QMainWindow):
+    def __init__(self):
+        super().__init__()
+        uic.loadUi('add_solve.ui', self)
+        self.con = sqlite3.connect('problems.db')
+        self.cur = self.con.cursor()
+        self.pushButton.clicked.connect(self.make)
+
+    def make(self):
+        res = self.textEdit.toPlainText()
+        self.con = sqlite3.connect('problems.db')
+        self.cur = self.con.cursor()
+        id = self.lineEdit.text()
+        self.cur.execute(f"""UPDATE problems SET solve = '{res}' WHERE id = {int(id)}""")
+        self.con.commit()
+        TheMainWindow.solve(w)
+        self.close()
+
+
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)

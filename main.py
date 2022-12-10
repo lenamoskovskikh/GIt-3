@@ -3,6 +3,7 @@ import random
 from PyQt5 import uic
 import sqlite3
 import math
+import csv
 from PyQt5.QtWidgets import QApplication, QMainWindow, QListWidgetItem
 from PyQt5.QtWidgets import *
 from PyQt5.QtGui import *
@@ -68,6 +69,7 @@ class MainWindow(QMainWindow):
             stylesheet_m = """            TheMainWindow {                background-image: url("themain.png");                 background-repeat: no-repeat;                 background-position: center;            }        """
             self.mainw.setStyleSheet(stylesheet_m)
             self.mainw.show()
+            self.close()
 
     def literature(self):
         self.literatures = LitWindow()
@@ -89,9 +91,54 @@ class TheMainWindow(QMainWindow):
         super().__init__()
         global w
         uic.loadUi('themain.ui', self)
+        self.lineEdit_2.setFont(QFont("Academy", 17))
+        self.label_4.setFont(QFont("Academy", 17))
+        res = {}
+        with open('news.csv', encoding="utf8") as file:
+            reader = csv.reader(file, delimiter=';', quotechar='"')
+            for el in reader:
+                el = el[0].split(',')
+                res[el[0]] = el[1]
+            data = sorted(res.keys())
+        items = []
+        for i in range(len(data)):
+            items.append((data[i], res[data[i]]))
+        self.tableWidget.setRowCount(0)
+        self.tableWidget.setColumnCount(2)
+        self.tableWidget.setHorizontalHeaderLabels(['дата', 'мероприятие'])
+        for value, item in enumerate(items):
+            self.tableWidget.setRowCount(self.tableWidget.rowCount() + 1)
+            for el, row in enumerate(item):
+                self.tableWidget.setItem(value, el, QTableWidgetItem(str(row)))
+        self.tableWidget.horizontalHeader().resizeSection(1, 1500)
+        self.tableWidget.horizontalHeader().resizeSection(0, 150)
+        self.tableWidget.setStyleSheet("font: 17pt \"Academy\";\n"
+                                        "color: rgb(100, 100, 150);\n"
+                                        "background-color: rgba(250, 250, 255, 100);")
         self.pushButton_3.setStyleSheet("font: 12pt \"Times New Roman\";\n"
                                         "color: rgb(255, 255, 255);\n"
                                         "background-color: rgba(100, 100, 150, 170);")
+        self.pushButton_20.setStyleSheet("font: 12pt \"Times New Roman\";\n"
+                                        "color: rgb(255, 255, 255);\n"
+                                        "background-color: rgba(100, 100, 150, 170);")
+        self.pushButton_19.setStyleSheet("font: 12pt \"Times New Roman\";\n"
+                                        "color: rgb(255, 255, 255);\n"
+                                        "background-color: rgba(100, 100, 150, 170);")
+        self.pushButton_21.setStyleSheet("font: 12pt \"Times New Roman\";\n"
+                                        "color: rgb(255, 255, 255);\n"
+                                        "background-color: rgba(100, 100, 150, 170);")
+        self.pushButton_21.setStyleSheet("font: 12pt \"Times New Roman\";\n"
+                                         "color: rgb(255, 255, 255);\n"
+                                         "background-color: rgba(100, 100, 150, 170);")
+        self.pushButton_22.setStyleSheet("font: 12pt \"Times New Roman\";\n"
+                                         "color: rgb(255, 255, 255);\n"
+                                         "background-color: rgba(100, 100, 150, 170);")
+        self.pushButton.setStyleSheet("font: 12pt \"Times New Roman\";\n"
+                                         "color: rgb(255, 255, 255);\n"
+                                         "background-color: rgba(100, 100, 150, 170);")
+        self.pushButton_2.setStyleSheet("font: 12pt \"Times New Roman\";\n"
+                                         "color: rgb(255, 255, 255);\n"
+                                         "background-color: rgba(100, 100, 150, 170);")
         self.pushButton_4.setStyleSheet("font: 12pt \"Times New Roman\";\n"
                                         "color: rgb(255, 255, 255);\n"
                                         "background-color: rgba(100, 100, 150, 170);")
@@ -197,6 +244,10 @@ class SolveWindow(QMainWindow):
         uic.loadUi('add_solve.ui', self)
         self.con = sqlite3.connect('problems.db')
         self.cur = self.con.cursor()
+        self.label.setFont(QFont("Academy", 17))
+        self.textEdit.setStyleSheet("font: 12pt \"Times New Roman\";\n"
+                                         "color: rgb(255, 255, 255);\n"
+                                         "background-color: rgba(100, 100, 150, 170);")
         self.pushButton.clicked.connect(self.make)
 
     def make(self):
@@ -243,6 +294,7 @@ class InfoWindow(QMainWindow):
     def __init__(self):
         super().__init__()
         uic.loadUi('info.ui', self)
+        self.textEdit.setFont(QFont("Times New Roman", 16))
 
 
 class RegWindow(QMainWindow):
@@ -309,6 +361,9 @@ class LitWindow(QMainWindow):
         global a
         self.con = sqlite3.connect('literature.db')
         self.cur = self.con.cursor()
+        self.tableWidget.setStyleSheet("font: 17pt \"Academy\";\n"
+                                        "color: rgb(100, 100, 150);\n"
+                                        "background-color: rgba(250, 250, 255, 100);")
         self.label.setFont(QFont("Times New Roman", 20))
         self.pushButton.setStyleSheet("font: 12pt \"Times New Roman\";\n"
                                         "color: rgb(255, 255, 255);\n"

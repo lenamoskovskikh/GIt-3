@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>2142</width>
-    <height>1178</height>
+    <width>2172</width>
+    <height>1160</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -223,7 +223,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>мои решения</string>
+     <string>мои олимпиады</string>
     </property>
    </widget>
    <widget class="QPushButton" name="pushButton_21">
@@ -244,7 +244,7 @@
      <rect>
       <x>50</x>
       <y>540</y>
-      <width>1151</width>
+      <width>1681</width>
       <height>111</height>
      </rect>
     </property>
@@ -265,10 +265,10 @@
    <widget class="QPushButton" name="pushButton_22">
     <property name="geometry">
      <rect>
-      <x>1230</x>
-      <y>540</y>
-      <width>181</width>
-      <height>161</height>
+      <x>1190</x>
+      <y>670</y>
+      <width>541</width>
+      <height>41</height>
      </rect>
     </property>
     <property name="text">
@@ -280,8 +280,41 @@
      <rect>
       <x>50</x>
       <y>670</y>
-      <width>1151</width>
+      <width>1111</width>
+      <height>41</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_4">
+    <property name="geometry">
+     <rect>
+      <x>80</x>
+      <y>720</y>
+      <width>721</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>новости ( олимпиады и другие мероприятия ) </string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="lineEdit_2">
+    <property name="geometry">
+     <rect>
+      <x>790</x>
+      <y>40</y>
+      <width>51</width>
       <height>31</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QTableWidget" name="tableWidget">
+    <property name="geometry">
+     <rect>
+      <x>50</x>
+      <y>780</y>
+      <width>1681</width>
+      <height>301</height>
      </rect>
     </property>
    </widget>
@@ -291,7 +324,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>2142</width>
+     <width>2172</width>
      <height>26</height>
     </rect>
    </property>

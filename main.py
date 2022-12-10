@@ -161,10 +161,8 @@ class TheMainWindow(QMainWindow):
 
 
     def problems(self):
-        self.problems = ProblemsWindow()
-        stylesheet_s3 = """            ProblemsWindow {                background-image: url("regist.png");                 background-repeat: no-repeat;                 background-position: center;            }        """
-        self.problems.setStyleSheet(stylesheet_s3)
-        self.problems.show()
+        self.problemsss = ProblemssWindow()
+        self.problemsss.show()
 
 
     def tasks(self):
@@ -217,24 +215,37 @@ class TheMainWindow(QMainWindow):
         self.add_solving = SolveWindow()
         self.add_solving.show()
 
-class ProblemsWindow(QMainWindow):
+class ProblemssWindow(QMainWindow):
     def __init__(self):
         super().__init__()
         uic.loadUi('problemsss.ui', self)
         self.con = sqlite3.connect('problems.db')
         self.cur = self.con.cursor()
-        result = self.cur.execute("""SELECT * from problems""").fetchall()[0]
-        types = self.cur.execute("""SELECT type from problems""").fetchall()[0]
-        self.comboBox.addItems(types)
-        '''self.tableWidget.setRowCount(0)
+        result = self.cur.execute("""SELECT * from problems""").fetchall()
+        r = []
+        for el in result:
+            r.append(el)
+        types = self.cur.execute("""SELECT type from problems""").fetchall()
+        type = set()
+        for el in types:
+            type.add(el[0])
+        self.tableWidget.setStyleSheet("font: 17pt \"Academy\";\n"
+                                        "color: rgb(100, 100, 150);\n"
+                                        "background-color: rgba(250, 250, 255, 100);")
+        self.comboBox.addItems(list(type))
+        self.tableWidget.setRowCount(0)
         self.tableWidget.setColumnCount(6)
         self.tableWidget.setHorizontalHeaderLabels(['id', 'условие', 'сложность', 'тема', 'тема', 'решение'])
+        self.tableWidget.horizontalHeader().resizeSection(1, 500)
+        self.tableWidget.horizontalHeader().resizeSection(5, 500)
+        self.tableWidget.horizontalHeader().resizeSection(3, 300)
+        self.tableWidget.horizontalHeader().resizeSection(4, 300)
+        self.tableWidget.verticalHeader().resizeSection(4, 500)
         for value, item in enumerate(result):
             self.tableWidget.setRowCount(self.tableWidget.rowCount() + 1)
             for el, row in enumerate(item):
                 self.tableWidget.setItem(value, el, QTableWidgetItem(str(row)))
-        self.tableWidget.horizontalHeader().resizeSection(1, 300)
-        self.tableWidget.horizontalHeader().resizeSection(0, 300)'''
+
 
 
 

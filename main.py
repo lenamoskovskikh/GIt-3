@@ -111,7 +111,9 @@ class TheMainWindow(QMainWindow):
                 self.tableWidget.setItem(value, el, QTableWidgetItem(str(row)))
         self.tableWidget.horizontalHeader().resizeSection(1, 1500)
         self.tableWidget.horizontalHeader().resizeSection(0, 150)
-        self.label_5.setFont(QFont("Academy", 30))
+        self.label_5.setStyleSheet("font: 30pt \"Academy\";\n"
+                                        "color: rgb(255, 255, 255);\n"
+                                        "background-color: rgba(100, 100, 150, 0);")
         self.pushButton_2.setStyleSheet("font: 12pt \"Times New Roman\";\n"
                                         "color: rgb(255, 255, 255);\n"
                                         "background-color: rgba(100, 100, 150, 170);")
@@ -253,16 +255,42 @@ class TWindow(QMainWindow):
     def __init__(self):
         super().__init__()
         uic.loadUi('tasks.ui', self)
+        self.textEdit.setStyleSheet("font: 17pt \"Academy\";\n"
+                                        "color: rgb(0, 0, 0);\n"
+                                        "background-color: rgba(255, 255, 255, 170);")
+        self.textEdit_2.setStyleSheet("font: 17pt \"Academy\";\n"
+                                    "color: rgb(0, 0, 0);\n"
+                                    "background-color: rgba(255, 255, 255, 170);")
+        self.textEdit_3.setStyleSheet("font: 17pt \"Academy\";\n"
+                                    "color: rgb(0, 0, 0);\n"
+                                    "background-color: rgba(255, 255, 255, 170);")
+
         self.con = sqlite3.connect('problems.db')
         self.cur = self.con.cursor()
         res = self.cur.execute(f"""SELECT task from problems""").fetchall()
         res1 = []
         for el in res:
-            res1.append(el)
+            res1.append(el[0])
         res2 = []
         for i in range(len(res1)):
             res2.append(int(i))
-        self.textEdit.setText(res1[math.choice(res2)])
+        t = random.choice(res2)
+        self.textEdit.setText(res1[t])
+        res1.pop(res1.index(res1[t]))
+        res2.pop(int(t))
+        res2 = []
+        for i in range(len(res1)):
+            res2.append(int(i))
+        m = random.choice(res2)
+        self.textEdit_2.setText(res1[m])
+        res1.pop(res1.index(res1[m]))
+        res2.pop(int(m))
+        res2 = []
+        for i in range(len(res1)):
+            res2.append(int(i))
+        y = random.choice(res2)
+        self.textEdit_3.setText(res1[y])
+        res2.pop(int(y))
 
 
 
@@ -297,8 +325,7 @@ class PWindow(QMainWindow):
         self.cur = self.con.cursor()
         self.cur.execute(f"""INSERT INTO problems(task, points, type, type2, solve) VALUES('{str(task)}', '{str(points)}', '{str(type1)}', '{str(type2)}', '{str(solve)}')""")
         self.con.commit()
-        res = self.cur.execute("""SELECT * from problems where points = '1'""").fetchall()
-        print(res)
+        self.label_9.setText('задача добавлена')
 
 
 

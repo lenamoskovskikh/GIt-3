@@ -91,7 +91,6 @@ class TheMainWindow(QMainWindow):
         super().__init__()
         global w
         uic.loadUi('themain.ui', self)
-        self.lineEdit_2.setFont(QFont("Academy", 17))
         self.label_4.setFont(QFont("Academy", 17))
         res = {}
         with open('news.csv', encoding="utf8") as file:
@@ -136,9 +135,7 @@ class TheMainWindow(QMainWindow):
         self.pushButton.setStyleSheet("font: 12pt \"Times New Roman\";\n"
                                          "color: rgb(255, 255, 255);\n"
                                          "background-color: rgba(100, 100, 150, 170);")
-        self.pushButton_2.setStyleSheet("font: 12pt \"Times New Roman\";\n"
-                                         "color: rgb(255, 255, 255);\n"
-                                         "background-color: rgba(100, 100, 150, 170);")
+        self.pushButton.clicked.connect(self.search)
         self.pushButton_4.setStyleSheet("font: 12pt \"Times New Roman\";\n"
                                         "color: rgb(255, 255, 255);\n"
                                         "background-color: rgba(100, 100, 150, 170);")
@@ -207,6 +204,13 @@ class TheMainWindow(QMainWindow):
         w = self
 
 
+    def search(self):
+        self.searching = SWindow()
+        stylesheet_s1 = """            SWindow {                background-image: url("snow5.png");                 background-repeat: no-repeat;                 background-position: center;            }        """
+        self.searching.setStyleSheet(stylesheet_s1)
+        self.searching.show()
+
+
     def daytask(self):
         self.con = sqlite3.connect('problems.db')
         self.cur = self.con.cursor()
@@ -236,6 +240,61 @@ class TheMainWindow(QMainWindow):
     def add_solve(self):
         self.add_solving = SolveWindow()
         self.add_solving.show()
+
+class SWindow(QMainWindow):
+    def __init__(self):
+        super().__init__()
+        uic.loadUi('search.ui', self)
+        self.label.setFont(QFont("Academy", 30))
+        self.label_2.setFont(QFont("Academy", 17))
+        self.label_3.setFont(QFont("Academy", 17))
+        self.label_4.setFont(QFont("Academy", 17))
+        self.label_5.setFont(QFont("Academy", 17))
+        self.label_6.setFont(QFont("Academy", 24))
+        self.label_7.setFont(QFont("Academy", 24))
+        self.label_8.setFont(QFont("Academy", 13))
+        self.textEdit.setFont(QFont("Academy", 17))
+        self.textEdit_2.setFont(QFont("Academy", 17))
+        self.lineEdit_5.setFont(QFont("Academy", 17))
+        self.pushButton_3.setStyleSheet("font: 12pt \"Times New Roman\";\n"
+                                         "color: rgb(255, 255, 255);\n"
+                                         "background-color: rgba(100, 100, 150, 170);")
+        self.pushButton.setStyleSheet("font: 12pt \"Times New Roman\";\n"
+                                         "color: rgb(255, 255, 255);\n"
+                                         "background-color: rgba(100, 100, 150, 170);")
+        self.pushButton_2.setStyleSheet("font: 12pt \"Times New Roman\";\n"
+                                      "color: rgb(255, 255, 255);\n"
+                                      "background-color: rgba(100, 100, 150, 170);")
+        self.lineEdit_3.setFont(QFont("Academy", 17))
+        self.lineEdit_2.setFont(QFont("Academy", 17))
+        self.lineEdit_4.setFont(QFont("Academy", 17))
+        self.lineEdit.setFont(QFont("Academy", 17))
+        self.pushButton_3.clicked.connect(self.find)
+        self.pushButton.clicked.connect(self.add)
+        self.pushButton_2.clicked.connect(self.create)
+
+
+
+    def find(self):
+        self.con = sqlite3.connect('problems.db')
+        self.cur = self.con.cursor()
+        try:
+            res = self.cur.execute(f"""SELECT * FROM problems WHERE id = {int(self.lineEdit_5.text())}""").fetchall()[0]
+        except Exception:
+            pass
+        item = []
+        for el in res:
+            item.append(el)
+        self.lineEdit.setText(str(item[0]))
+        self.lineEdit_2.setText(str(item[2]))
+        self.lineEdit_3.setText(str(item[3]))
+        self.lineEdit_4.setText(str(item[4]))
+        self.textEdit.setText(str(item[1]))
+        self.textEdit_2.setText(str(item[5]))
+
+
+
+
 
 
 class SolveWindow(QMainWindow):
@@ -267,6 +326,8 @@ class GoWindow(QMainWindow):
         self.label_5.setFont(QFont("Times New Roman", 16))
         self.label_2.setFont(QFont("Times New Roman", 16))
         self.label.setFont(QFont("Times New Roman", 16))
+        self.lineEdit.setFont(QFont("Academy", 17))
+        self.lineEdit_2.setFont(QFont("Academy", 17))
         self.label_4.setFont(QFont("Times New Roman", 30))
         self.con = sqlite3.connect('profiles.db')
         self.cur = self.con.cursor()
@@ -303,6 +364,9 @@ class RegWindow(QMainWindow):
         uic.loadUi('registration.ui', self)
         self.con = sqlite3.connect('profiles.db')
         self.cur = self.con.cursor()
+        self.lineEdit.setFont(QFont("Academy", 17))
+        self.lineEdit_2.setFont(QFont("Academy", 17))
+        self.lineEdit_3.setFont(QFont("Academy", 17))
         self.label_5.setFont(QFont("Times New Roman", 16))
         self.pushButton.setStyleSheet("font: 20pt \"Times New Roman\";\n"
                                         "color: rgb(255, 255, 255);\n"

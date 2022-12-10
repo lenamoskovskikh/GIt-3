@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>2172</width>
-    <height>1160</height>
+    <height>1114</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,8 +17,8 @@
    <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
-      <x>660</x>
-      <y>30</y>
+      <x>1850</x>
+      <y>280</y>
       <width>131</width>
       <height>51</height>
      </rect>
@@ -30,10 +30,10 @@
    <widget class="QPushButton" name="pushButton">
     <property name="geometry">
      <rect>
-      <x>790</x>
-      <y>40</y>
-      <width>161</width>
-      <height>31</height>
+      <x>1850</x>
+      <y>350</y>
+      <width>281</width>
+      <height>61</height>
      </rect>
     </property>
     <property name="text">
@@ -63,135 +63,11 @@
      <string>случайная задача</string>
     </property>
    </widget>
-   <widget class="QWidget" name="gridLayoutWidget">
-    <property name="geometry">
-     <rect>
-      <x>1860</x>
-      <y>140</y>
-      <width>251</width>
-      <height>921</height>
-     </rect>
-    </property>
-    <layout class="QGridLayout" name="gridLayout_2">
-     <item row="13" column="0">
-      <widget class="QPushButton" name="pushButton_16">
-       <property name="text">
-        <string>механика</string>
-       </property>
-      </widget>
-     </item>
-     <item row="1" column="0">
-      <widget class="QPushButton" name="pushButton_4">
-       <property name="text">
-        <string>новости</string>
-       </property>
-      </widget>
-     </item>
-     <item row="7" column="0">
-      <widget class="QPushButton" name="pushButton_10">
-       <property name="text">
-        <string>вероятность и статистика</string>
-       </property>
-      </widget>
-     </item>
-     <item row="11" column="0">
-      <widget class="QPushButton" name="pushButton_14">
-       <property name="text">
-        <string>оптика</string>
-       </property>
-      </widget>
-     </item>
-     <item row="12" column="0">
-      <widget class="QPushButton" name="pushButton_15">
-       <property name="text">
-        <string>электричество</string>
-       </property>
-      </widget>
-     </item>
-     <item row="0" column="0">
-      <widget class="QPushButton" name="pushButton_3">
-       <property name="text">
-        <string>интересные факты</string>
-       </property>
-      </widget>
-     </item>
-     <item row="4" column="0">
-      <widget class="QPushButton" name="pushButton_7">
-       <property name="text">
-        <string>теория множеств</string>
-       </property>
-      </widget>
-     </item>
-     <item row="9" column="0">
-      <widget class="QPushButton" name="pushButton_12">
-       <property name="text">
-        <string>методы</string>
-       </property>
-      </widget>
-     </item>
-     <item row="2" column="0">
-      <widget class="QPushButton" name="pushButton_5">
-       <property name="text">
-        <string>математический словарик</string>
-       </property>
-      </widget>
-     </item>
-     <item row="3" column="0">
-      <widget class="QPushButton" name="pushButton_6">
-       <property name="text">
-        <string>физический словарик</string>
-       </property>
-      </widget>
-     </item>
-     <item row="10" column="0">
-      <widget class="QPushButton" name="pushButton_13">
-       <property name="text">
-        <string>динамика</string>
-       </property>
-      </widget>
-     </item>
-     <item row="6" column="0">
-      <widget class="QPushButton" name="pushButton_9">
-       <property name="text">
-        <string>комбинаторика</string>
-       </property>
-      </widget>
-     </item>
-     <item row="14" column="0">
-      <widget class="QPushButton" name="pushButton_17">
-       <property name="text">
-        <string>магнитизм</string>
-       </property>
-      </widget>
-     </item>
-     <item row="8" column="0">
-      <widget class="QPushButton" name="pushButton_11">
-       <property name="text">
-        <string>математический анализ</string>
-       </property>
-      </widget>
-     </item>
-     <item row="5" column="0">
-      <widget class="QPushButton" name="pushButton_8">
-       <property name="text">
-        <string>алгебра и арифметика</string>
-       </property>
-      </widget>
-     </item>
-     <item row="15" column="0">
-      <widget class="QPushButton" name="pushButton_18">
-       <property name="text">
-        <string>топология</string>
-       </property>
-      </widget>
-     </item>
-    </layout>
-   </widget>
    <widget class="QPushButton" name="pushButton_19">
     <property name="geometry">
      <rect>
       <x>1470</x>
-      <y>200</y>
+      <y>240</y>
       <width>261</width>
       <height>51</height>
      </rect>
@@ -200,24 +76,11 @@
      <string>порешать задачи</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_20">
-    <property name="geometry">
-     <rect>
-      <x>1470</x>
-      <y>280</y>
-      <width>261</width>
-      <height>51</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>мои олимпиады</string>
-    </property>
-   </widget>
    <widget class="QPushButton" name="pushButton_21">
     <property name="geometry">
      <rect>
       <x>1470</x>
-      <y>350</y>
+      <y>320</y>
       <width>261</width>
       <height>51</height>
      </rect>
@@ -298,14 +161,40 @@
    <widget class="QPushButton" name="pushButton_2">
     <property name="geometry">
      <rect>
-      <x>990</x>
-      <y>40</y>
-      <width>171</width>
-      <height>28</height>
+      <x>1850</x>
+      <y>450</y>
+      <width>281</width>
+      <height>61</height>
      </rect>
     </property>
     <property name="text">
      <string>добавить задачу</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_3">
+    <property name="geometry">
+     <rect>
+      <x>1850</x>
+      <y>190</y>
+      <width>291</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>задачи по темам</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_5">
+    <property name="geometry">
+     <rect>
+      <x>470</x>
+      <y>-10</y>
+      <width>1051</width>
+      <height>91</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>нестандартные задачи и их решения</string>
     </property>
    </widget>
   </widget>

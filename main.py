@@ -111,19 +111,17 @@ class TheMainWindow(QMainWindow):
                 self.tableWidget.setItem(value, el, QTableWidgetItem(str(row)))
         self.tableWidget.horizontalHeader().resizeSection(1, 1500)
         self.tableWidget.horizontalHeader().resizeSection(0, 150)
+        self.label_5.setFont(QFont("Academy", 30))
+        self.pushButton_2.setStyleSheet("font: 12pt \"Times New Roman\";\n"
+                                        "color: rgb(255, 255, 255);\n"
+                                        "background-color: rgba(100, 100, 150, 170);")
         self.tableWidget.setStyleSheet("font: 17pt \"Academy\";\n"
                                         "color: rgb(100, 100, 150);\n"
                                         "background-color: rgba(250, 250, 255, 100);")
         self.pushButton_3.setStyleSheet("font: 12pt \"Times New Roman\";\n"
                                         "color: rgb(255, 255, 255);\n"
                                         "background-color: rgba(100, 100, 150, 170);")
-        self.pushButton_20.setStyleSheet("font: 12pt \"Times New Roman\";\n"
-                                        "color: rgb(255, 255, 255);\n"
-                                        "background-color: rgba(100, 100, 150, 170);")
         self.pushButton_19.setStyleSheet("font: 12pt \"Times New Roman\";\n"
-                                        "color: rgb(255, 255, 255);\n"
-                                        "background-color: rgba(100, 100, 150, 170);")
-        self.pushButton_21.setStyleSheet("font: 12pt \"Times New Roman\";\n"
                                         "color: rgb(255, 255, 255);\n"
                                         "background-color: rgba(100, 100, 150, 170);")
         self.pushButton_21.setStyleSheet("font: 12pt \"Times New Roman\";\n"
@@ -136,51 +134,6 @@ class TheMainWindow(QMainWindow):
                                          "color: rgb(255, 255, 255);\n"
                                          "background-color: rgba(100, 100, 150, 170);")
         self.pushButton.clicked.connect(self.search)
-        self.pushButton_4.setStyleSheet("font: 12pt \"Times New Roman\";\n"
-                                        "color: rgb(255, 255, 255);\n"
-                                        "background-color: rgba(100, 100, 150, 170);")
-        self.pushButton_5.setStyleSheet("font: 12pt \"Times New Roman\";\n"
-                                        "color: rgb(255, 255, 255);\n"
-                                        "background-color: rgba(100, 100, 150, 170);")
-        self.pushButton_6.setStyleSheet("font: 12pt \"Times New Roman\";\n"
-                                        "color: rgb(255, 255, 255);\n"
-                                        "background-color: rgba(100, 100, 150, 170);")
-        self.pushButton_7.setStyleSheet("font: 12pt \"Times New Roman\";\n"
-                                        "color: rgb(255, 255, 255);\n"
-                                        "background-color: rgba(100, 100, 150, 170);")
-        self.pushButton_8.setStyleSheet("font: 12pt \"Times New Roman\";\n"
-                                        "color: rgb(255, 255, 255);\n"
-                                        "background-color: rgba(100, 100, 150, 170);")
-        self.pushButton_9.setStyleSheet("font: 12pt \"Times New Roman\";\n"
-                                        "color: rgb(255, 255, 255);\n"
-                                        "background-color: rgba(100, 100, 150, 170);")
-        self.pushButton_10.setStyleSheet("font: 12pt \"Times New Roman\";\n"
-                                        "color: rgb(255, 255, 255);\n"
-                                        "background-color: rgba(100, 100, 150, 170);")
-        self.pushButton_11.setStyleSheet("font: 12pt \"Times New Roman\";\n"
-                                        "color: rgb(255, 255, 255);\n"
-                                        "background-color: rgba(100, 100, 150, 170);")
-        self.pushButton_12.setStyleSheet("font: 12pt \"Times New Roman\";\n"
-                                        "color: rgb(255, 255, 255);\n"
-                                        "background-color: rgba(100, 100, 150, 170);")
-        self.pushButton_13.setStyleSheet("font: 12pt \"Times New Roman\";\n"
-                                        "color: rgb(255, 255, 255);\n"
-                                        "background-color: rgba(100, 100, 150, 170);")
-        self.pushButton_14.setStyleSheet("font: 12pt \"Times New Roman\";\n"
-                                        "color: rgb(255, 255, 255);\n"
-                                        "background-color: rgba(100, 100, 150, 170);")
-        self.pushButton_15.setStyleSheet("font: 12pt \"Times New Roman\";\n"
-                                         "color: rgb(255, 255, 255);\n"
-                                         "background-color: rgba(100, 100, 150, 170);")
-        self.pushButton_16.setStyleSheet("font: 12pt \"Times New Roman\";\n"
-                                         "color: rgb(255, 255, 255);\n"
-                                         "background-color: rgba(100, 100, 150, 170);")
-        self.pushButton_17.setStyleSheet("font: 12pt \"Times New Roman\";\n"
-                                         "color: rgb(255, 255, 255);\n"
-                                         "background-color: rgba(100, 100, 150, 170);")
-        self.pushButton_18.setStyleSheet("font: 12pt \"Times New Roman\";\n"
-                                         "color: rgb(255, 255, 255);\n"
-                                         "background-color: rgba(100, 100, 150, 170);")
         self.label_2.setFont(QFont("Academy", 17))
         self.label.setStyleSheet("font: 17pt \"Academy\";\n"
                                         "color: rgb(255, 255, 255);\n"
@@ -197,11 +150,34 @@ class TheMainWindow(QMainWindow):
         self.daytask()
         self.pushButton_21.clicked.connect(self.solve)
         self.pushButton_22.clicked.connect(self.add_solve)
+        self.pushButton_19.clicked.connect(self.tasks)
+        self.pushButton_3.clicked.connect(self.problems)
+        self.pushButton_2.clicked.connect(self.problem)
         self.label_3.setFont(QFont("Academy", 17))
         self.lineEdit.setStyleSheet("font: 17pt \"Academy\";\n"
                                     "color: rgb(0, 0, 0);\n"
                                     "background-color: rgba(255, 255, 255, 170);")
         w = self
+
+
+    def problems(self):
+        self.problems = ProblemsWindow()
+        stylesheet_s3 = """            ProblemsWindow {                background-image: url("regist.png");                 background-repeat: no-repeat;                 background-position: center;            }        """
+        self.problems.setStyleSheet(stylesheet_s3)
+        self.problems.show()
+
+
+    def tasks(self):
+        self.task = TWindow()
+        stylesheet_s3 = """            TWindow {                background-image: url("regist.png");                 background-repeat: no-repeat;                 background-position: center;            }        """
+        self.task.setStyleSheet(stylesheet_s3)
+        self.task.show()
+
+    def problem(self):
+        self.prob = PWindow()
+        stylesheet_s2 = """            PWindow {                background-image: url("snow5.png");                 background-repeat: no-repeat;                 background-position: center;            }        """
+        self.prob.setStyleSheet(stylesheet_s2)
+        self.prob.show()
 
 
     def search(self):
@@ -240,6 +216,80 @@ class TheMainWindow(QMainWindow):
     def add_solve(self):
         self.add_solving = SolveWindow()
         self.add_solving.show()
+
+class ProblemsWindow(QMainWindow):
+    def __init__(self):
+        super().__init__()
+        uic.loadUi('problemsss.ui', self)
+        self.con = sqlite3.connect('problems.db')
+        self.cur = self.con.cursor()
+        result = self.cur.execute("""SELECT * from problems""").fetchall()[0]
+        types = self.cur.execute("""SELECT type from problems""").fetchall()[0]
+        self.comboBox.addItems(types)
+        '''self.tableWidget.setRowCount(0)
+        self.tableWidget.setColumnCount(6)
+        self.tableWidget.setHorizontalHeaderLabels(['id', 'условие', 'сложность', 'тема', 'тема', 'решение'])
+        for value, item in enumerate(result):
+            self.tableWidget.setRowCount(self.tableWidget.rowCount() + 1)
+            for el, row in enumerate(item):
+                self.tableWidget.setItem(value, el, QTableWidgetItem(str(row)))
+        self.tableWidget.horizontalHeader().resizeSection(1, 300)
+        self.tableWidget.horizontalHeader().resizeSection(0, 300)'''
+
+
+
+class TWindow(QMainWindow):
+    def __init__(self):
+        super().__init__()
+        uic.loadUi('tasks.ui', self)
+        self.con = sqlite3.connect('problems.db')
+        self.cur = self.con.cursor()
+        res = self.cur.execute(f"""SELECT task from problems""").fetchall()
+        res1 = []
+        for el in res:
+            res1.append(el)
+        res2 = []
+        for i in range(len(res1)):
+            res2.append(int(i))
+        self.textEdit.setText(res1[math.choice(res2)])
+
+
+
+class PWindow(QMainWindow):
+    def __init__(self):
+        super().__init__()
+        uic.loadUi('add_new_solve.ui', self)
+        self.label.setFont(QFont("Academy", 30))
+        self.label_3.setFont(QFont("Academy", 17))
+        self.label_4.setFont(QFont("Academy", 17))
+        self.label_5.setFont(QFont("Academy", 17))
+        self.label_6.setFont(QFont("Academy", 24))
+        self.label_7.setFont(QFont("Academy", 24))
+        self.textEdit.setFont(QFont("Academy", 17))
+        self.textEdit_2.setFont(QFont("Academy", 17))
+        self.pushButton.setStyleSheet("font: 12pt \"Times New Roman\";\n"
+                                      "color: rgb(255, 255, 255);\n"
+                                      "background-color: rgba(100, 100, 150, 170);")
+        self.lineEdit_3.setFont(QFont("Academy", 17))
+        self.lineEdit_2.setFont(QFont("Academy", 17))
+        self.lineEdit_4.setFont(QFont("Academy", 17))
+        self.pushButton.clicked.connect(self.add)
+
+
+    def add(self):
+        points = self.lineEdit_2.text()
+        type1 = self.lineEdit_3.text()
+        type2 = self.lineEdit_3.text()
+        task = self.textEdit.toPlainText()
+        solve = self.textEdit_2.toPlainText()
+        self.con = sqlite3.connect('problems.db')
+        self.cur = self.con.cursor()
+        self.cur.execute(f"""INSERT INTO problems(task, points, type, type2, solve) VALUES('{str(task)}', '{str(points)}', '{str(type1)}', '{str(type2)}', '{str(solve)}')""")
+        self.con.commit()
+        res = self.cur.execute("""SELECT * from problems where points = '1'""").fetchall()
+        print(res)
+
+
 
 class SWindow(QMainWindow):
     def __init__(self):
@@ -297,6 +347,7 @@ class SWindow(QMainWindow):
         self.cur.execute(f"""UPDATE problems SET solve = '{res}' WHERE id = {int(id)}""")
         self.label_9.setText('изменения добавлены')
         self.con.commit()
+        self.con.close()
 
 
 
@@ -319,6 +370,7 @@ class SolveWindow(QMainWindow):
         id = self.lineEdit.text()
         self.cur.execute(f"""UPDATE problems SET solve = '{res}' WHERE id = {int(id)}""")
         self.con.commit()
+        self.con.close()
         TheMainWindow.solve(w)
         self.close()
 

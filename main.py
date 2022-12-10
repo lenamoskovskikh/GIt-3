@@ -262,16 +262,14 @@ class SWindow(QMainWindow):
         self.pushButton.setStyleSheet("font: 12pt \"Times New Roman\";\n"
                                          "color: rgb(255, 255, 255);\n"
                                          "background-color: rgba(100, 100, 150, 170);")
-        self.pushButton_2.setStyleSheet("font: 12pt \"Times New Roman\";\n"
-                                      "color: rgb(255, 255, 255);\n"
-                                      "background-color: rgba(100, 100, 150, 170);")
         self.lineEdit_3.setFont(QFont("Academy", 17))
         self.lineEdit_2.setFont(QFont("Academy", 17))
         self.lineEdit_4.setFont(QFont("Academy", 17))
         self.lineEdit.setFont(QFont("Academy", 17))
+        self.label_9.setFont(QFont("Academy", 17))
         self.pushButton_3.clicked.connect(self.find)
         self.pushButton.clicked.connect(self.add)
-        self.pushButton_2.clicked.connect(self.create)
+
 
 
 
@@ -293,7 +291,12 @@ class SWindow(QMainWindow):
         self.textEdit_2.setText(str(item[5]))
 
 
-
+    def add(self):
+        res = self.textEdit_2.toPlainText()
+        id = self.lineEdit.text()
+        self.cur.execute(f"""UPDATE problems SET solve = '{res}' WHERE id = {int(id)}""")
+        self.label_9.setText('изменения добавлены')
+        self.con.commit()
 
 
 

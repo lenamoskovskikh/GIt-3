@@ -17,23 +17,23 @@
    <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
-      <x>1840</x>
-      <y>140</y>
+      <x>1860</x>
+      <y>110</y>
       <width>131</width>
       <height>51</height>
      </rect>
     </property>
     <property name="text">
-     <string>Каталог </string>
+     <string>поиск </string>
     </property>
    </widget>
    <widget class="QPushButton" name="pushButton">
     <property name="geometry">
      <rect>
-      <x>1850</x>
-      <y>310</y>
-      <width>291</width>
-      <height>61</height>
+      <x>710</x>
+      <y>20</y>
+      <width>161</width>
+      <height>41</height>
      </rect>
     </property>
     <property name="text">
@@ -161,41 +161,109 @@
    <widget class="QPushButton" name="pushButton_2">
     <property name="geometry">
      <rect>
-      <x>1850</x>
-      <y>400</y>
-      <width>291</width>
-      <height>61</height>
+      <x>920</x>
+      <y>20</y>
+      <width>161</width>
+      <height>41</height>
      </rect>
     </property>
     <property name="text">
      <string>добавить задачу</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_3">
-    <property name="geometry">
-     <rect>
-      <x>1850</x>
-      <y>230</y>
-      <width>291</width>
-      <height>61</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>задачи по темам</string>
-    </property>
-   </widget>
    <widget class="QLabel" name="label_5">
     <property name="geometry">
      <rect>
-      <x>470</x>
-      <y>-10</y>
-      <width>1051</width>
-      <height>91</height>
+      <x>490</x>
+      <y>10</y>
+      <width>211</width>
+      <height>51</height>
      </rect>
     </property>
     <property name="text">
-     <string>нестандартные задачи и их решения</string>
+     <string>каталог</string>
     </property>
+   </widget>
+   <widget class="QWidget" name="verticalLayoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>1870</x>
+      <y>170</y>
+      <width>251</width>
+      <height>671</height>
+     </rect>
+    </property>
+    <layout class="QVBoxLayout" name="verticalLayout">
+     <item>
+      <widget class="QPushButton" name="pushButton_4">
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>28</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>Логика и теория множеств</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="pushButton_5">
+       <property name="text">
+        <string>Алгебра и арифметика</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="pushButton_3">
+       <property name="text">
+        <string>Геометрия</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="pushButton_10">
+       <property name="text">
+        <string>Вероятность и статистика</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="pushButton_11">
+       <property name="text">
+        <string>Комбинаторика</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="pushButton_7">
+       <property name="text">
+        <string>Математический анализ</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="pushButton_8">
+       <property name="text">
+        <string>Принцип Дирихле </string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="pushButton_9">
+       <property name="text">
+        <string>Индукция</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="pushButton_6">
+       <property name="text">
+        <string>другое</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
